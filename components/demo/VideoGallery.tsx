@@ -37,11 +37,14 @@ export default function VideoGallery() {
   return (
     <div>
       {/* Main player */}
-      <div className="flex aspect-video w-full flex-col items-center justify-center gap-4 rounded-2xl border border-tint bg-navy text-white">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10">
-          <Play size={26} className="ml-0.5 text-white/70" />
+      <div className="relative flex aspect-video w-full flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl border border-white/15 bg-navy text-white shadow-2xl shadow-navy/20">
+        <div className="bg-grid-dark absolute inset-0" />
+        <div className="glow-orb top-1/2 left-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 bg-secondary/20" />
+
+        <div className="glass-dark relative flex h-16 w-16 items-center justify-center rounded-full">
+          <Play size={26} className="ml-0.5 text-white/80" />
         </div>
-        <div className="text-center">
+        <div className="relative text-center">
           <p className="font-semibold">{current.caption}</p>
           <p className="mt-1 text-sm text-white/50">Video coming soon</p>
         </div>
@@ -54,17 +57,17 @@ export default function VideoGallery() {
             key={stage.id}
             type="button"
             onClick={() => setActive(i)}
-            className={`group flex flex-col items-center gap-3 rounded-xl border bg-white p-4 text-center transition-colors ${
+            className={`glass group flex flex-col items-center gap-3 !rounded-xl p-4 text-center transition-all ${
               active === i
-                ? "border-primary ring-1 ring-primary"
-                : "border-tint hover:border-primary/50"
+                ? "!border-primary/60 shadow-lg shadow-primary/20"
+                : "hover:-translate-y-0.5 hover:!bg-white/80"
             }`}
           >
             <div
               className={`flex h-10 w-10 items-center justify-center rounded-full transition-colors ${
                 active === i
-                  ? "bg-primary text-white"
-                  : "bg-pale text-primary group-hover:bg-tint/60"
+                  ? "bg-gradient-to-br from-primary to-secondary text-white"
+                  : "bg-white/70 text-primary group-hover:bg-tint/60"
               }`}
             >
               <stage.icon size={18} />

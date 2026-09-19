@@ -15,30 +15,34 @@ import {
   Undo2,
   ArrowRight,
 } from "lucide-react";
-import DeckNav from "@/components/deck/DeckNav";
-import SlideLabel from "@/components/deck/SlideLabel";
-import StatusBadge from "@/components/deck/StatusBadge";
+import AboutNav from "@/components/about/AboutNav";
+import SlideLabel from "@/components/about/SlideLabel";
+import StatusBadge from "@/components/about/StatusBadge";
 
 export const metadata: Metadata = {
-  title: "The Deck — Cyclo",
+  title: "About — Cyclo",
   description: "Cyclo's pre-seed pitch: robotic laundry logistics.",
 };
 
 const TOTAL = 10;
 
-export default function DeckPage() {
+export default function AboutPage() {
   return (
     <>
-      <DeckNav />
+      <AboutNav />
 
       {/* 1. Intro */}
       <section
         id="intro"
-        className="flex min-h-[85vh] flex-col justify-center bg-navy px-6 py-24"
+        className="relative flex min-h-[85vh] flex-col justify-center overflow-hidden bg-navy px-6 py-24"
       >
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="bg-grid-dark absolute inset-0" />
+        <div className="glow-orb -top-32 left-1/4 h-96 w-96 bg-primary/25" />
+        <div className="glow-orb top-1/3 right-1/4 h-80 w-80 bg-secondary/25" />
+
+        <div className="relative mx-auto w-full max-w-6xl">
           <SlideLabel index={1} total={TOTAL} title="Intro" dark />
-          <h1 className="text-5xl font-bold tracking-tight text-white md:text-7xl">
+          <h1 className="text-gradient-light text-5xl font-bold tracking-tight md:text-7xl">
             Cyclo
           </h1>
           <p className="mt-5 text-sm font-semibold uppercase tracking-wider text-secondary">
@@ -52,41 +56,43 @@ export default function DeckPage() {
       </section>
 
       {/* 2. Problem */}
-      <section id="problem" className="bg-white px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section id="problem" className="relative overflow-hidden bg-white px-6 py-24">
+        <div className="bg-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl">
           <SlideLabel index={2} total={TOTAL} title="Problem" />
           <h2 className="text-3xl font-bold text-navy md:text-4xl">
             Laundry eats time nobody has.
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-tint bg-pale p-6">
-              <Clock size={22} className="text-primary" />
-              <h3 className="mt-4 font-bold text-navy">
-                It&apos;s automatic. You&apos;re still not free.
-              </h3>
-              <p className="mt-2 text-sm text-navy/70">
-                The machine does the washing — the cost is standing by for
-                it.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-tint bg-pale p-6">
-              <Footprints size={22} className="text-primary" />
-              <h3 className="mt-4 font-bold text-navy">Constant trips</h3>
-              <p className="mt-2 text-sm text-navy/70">
-                Up and down stairs to start, check, and collect a load.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-tint bg-pale p-6">
-              <RotateCcw size={22} className="text-primary" />
-              <h3 className="mt-4 font-bold text-navy">Forgotten loads</h3>
-              <p className="mt-2 text-sm text-navy/70">
-                Left too long, rewashed from scratch.
-              </p>
-            </div>
+            {[
+              {
+                icon: Clock,
+                title: "It's automatic. You're still not free.",
+                desc: "The machine does the washing — the cost is standing by for it.",
+              },
+              {
+                icon: Footprints,
+                title: "Constant trips",
+                desc: "Up and down stairs to start, check, and collect a load.",
+              },
+              {
+                icon: RotateCcw,
+                title: "Forgotten loads",
+                desc: "Left too long, rewashed from scratch.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="glass p-6">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
+                  <item.icon size={18} />
+                </span>
+                <h3 className="mt-4 font-bold text-navy">{item.title}</h3>
+                <p className="mt-2 text-sm text-navy/70">{item.desc}</p>
+              </div>
+            ))}
           </div>
 
-          <blockquote className="mt-12 rounded-2xl border-l-4 border-primary bg-pale p-6 text-lg font-medium text-navy md:p-8 md:text-xl">
+          <blockquote className="glass mt-12 border-l-4 !border-l-primary p-6 text-lg font-medium text-navy md:p-8 md:text-xl">
             &ldquo;I hate doing laundry — and most of the time, I&apos;m not
             even the one doing anything.&rdquo;
           </blockquote>
@@ -94,8 +100,9 @@ export default function DeckPage() {
       </section>
 
       {/* 3. Product */}
-      <section id="product" className="bg-pale px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section id="product" className="relative overflow-hidden bg-pale px-6 py-24">
+        <div className="bg-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl">
           <SlideLabel index={3} total={TOTAL} title="Product" />
           <h2 className="text-3xl font-bold text-navy md:text-4xl">
             Book it. Forget it. It&apos;s done.
@@ -120,8 +127,8 @@ export default function DeckPage() {
               },
             ].map((step, i) => (
               <div key={step.title} className="relative">
-                <div className="h-full rounded-2xl border border-tint bg-white p-6">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
+                <div className="glass h-full p-6">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-bold text-white shadow-md shadow-primary/30">
                     {i + 1}
                   </span>
                   <step.icon size={22} className="mt-4 text-primary" />
@@ -131,7 +138,7 @@ export default function DeckPage() {
                 {i < 2 && (
                   <ArrowRight
                     size={20}
-                    className="absolute top-1/2 -right-4 hidden -translate-y-1/2 text-tint md:block"
+                    className="absolute top-1/2 -right-4 hidden -translate-y-1/2 text-primary/40 md:block"
                   />
                 )}
               </div>
@@ -141,8 +148,9 @@ export default function DeckPage() {
       </section>
 
       {/* 4. How it works */}
-      <section id="how-it-works" className="bg-white px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section id="how-it-works" className="relative overflow-hidden bg-white px-6 py-24">
+        <div className="bg-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl">
           <SlideLabel index={4} total={TOTAL} title="How it works" />
           <h2 className="text-3xl font-bold text-navy md:text-4xl">
             Four steps, zero effort.
@@ -156,8 +164,8 @@ export default function DeckPage() {
               { icon: Undo2, title: "Return" },
             ].map((step, i) => (
               <div key={step.title} className="relative">
-                <div className="rounded-2xl border border-tint bg-pale p-6 text-center">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white text-primary">
+                <div className="glass p-6 text-center">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-white shadow-md shadow-primary/30">
                     <step.icon size={22} />
                   </div>
                   <h3 className="mt-4 font-bold text-navy">{step.title}</h3>
@@ -170,7 +178,7 @@ export default function DeckPage() {
                 {i < 3 && (
                   <ArrowRight
                     size={18}
-                    className="absolute top-1/2 -right-4 hidden -translate-y-1/2 text-tint lg:block"
+                    className="absolute top-1/2 -right-4 hidden -translate-y-1/2 text-primary/40 lg:block"
                   />
                 )}
               </div>
@@ -180,56 +188,56 @@ export default function DeckPage() {
       </section>
 
       {/* 5. Why now */}
-      <section id="why-now" className="bg-pale px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section id="why-now" className="relative overflow-hidden bg-pale px-6 py-24">
+        <div className="bg-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl">
           <SlideLabel index={5} total={TOTAL} title="Why now" />
           <h2 className="text-3xl font-bold text-navy md:text-4xl">
             Robots are proven. People already pay more for this.
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-tint bg-white p-6">
-              <Rocket size={22} className="text-primary" />
-              <h3 className="mt-4 font-bold text-navy">Proven</h3>
-              <p className="mt-2 text-sm text-navy/70">
-                Avride absorbed Starship&apos;s 21 exited campuses in 2026,
-                now 25+ campuses.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-tint bg-white p-6">
-              <AlertTriangle size={22} className="text-primary" />
-              <h3 className="mt-4 font-bold text-navy">The catch</h3>
-              <p className="mt-2 text-sm text-navy/70">
-                Campus-only is seasonal — Starship&apos;s own reason for
-                leaving.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-tint bg-white p-6">
-              <DollarSign size={22} className="text-primary" />
-              <h3 className="mt-4 font-bold text-navy">
-                Already paying more
-              </h3>
-              <p className="mt-2 text-sm text-navy/70">
-                Rinse has raised through Series D, backed by LG Electronics,
-                charging $15&ndash;50/load — but skips dorms and college
-                towns.
-              </p>
-            </div>
+            {[
+              {
+                icon: Rocket,
+                title: "Proven",
+                desc: "Avride absorbed Starship's 21 exited campuses in 2026, now 25+ campuses.",
+              },
+              {
+                icon: AlertTriangle,
+                title: "The catch",
+                desc: "Campus-only is seasonal — Starship's own reason for leaving.",
+              },
+              {
+                icon: DollarSign,
+                title: "Already paying more",
+                desc: "Rinse has raised through Series D, backed by LG Electronics, charging $15–50/load — but skips dorms and college towns.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="glass p-6">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
+                  <item.icon size={18} />
+                </span>
+                <h3 className="mt-4 font-bold text-navy">{item.title}</h3>
+                <p className="mt-2 text-sm text-navy/70">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* 6. Who pays */}
-      <section id="who-pays" className="bg-white px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section id="who-pays" className="relative overflow-hidden bg-white px-6 py-24">
+        <div className="bg-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl">
           <SlideLabel index={6} total={TOTAL} title="Who pays" />
           <h2 className="text-3xl font-bold text-navy md:text-4xl">
             Buildings grant access. Residents pay per load.
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-tint bg-pale p-8">
-              <span className="text-5xl font-bold text-primary">$4</span>
+            <div className="glass p-8">
+              <span className="text-gradient text-5xl font-bold">$4</span>
               <span className="ml-2 text-lg font-semibold text-navy/70">
                 / load
               </span>
@@ -237,7 +245,7 @@ export default function DeckPage() {
                 Charged directly to the resident at pickup.
               </p>
             </div>
-            <div className="rounded-2xl border border-tint bg-pale p-8">
+            <div className="glass p-8">
               <p className="text-sm text-navy/70">
                 Housing offices and hotel GMs grant building access{" "}
                 <span className="font-semibold text-navy">free</span>, as a
@@ -256,8 +264,9 @@ export default function DeckPage() {
       </section>
 
       {/* 7. Market */}
-      <section id="market" className="bg-pale px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section id="market" className="relative overflow-hidden bg-pale px-6 py-24">
+        <div className="bg-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl">
           <SlideLabel index={7} total={TOTAL} title="Market" />
           <h2 className="text-3xl font-bold text-navy md:text-4xl">
             $1.1B total addressable market.
@@ -268,7 +277,7 @@ export default function DeckPage() {
           </p>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-tint bg-white p-6">
+            <div className="glass p-6">
               <span className="text-xs font-semibold uppercase tracking-wider text-navy/50">
                 Conservative
               </span>
@@ -277,16 +286,16 @@ export default function DeckPage() {
                 25 campuses, 15 hotels, 15% adoption
               </p>
             </div>
-            <div className="rounded-2xl border-2 border-primary bg-white p-6">
+            <div className="glass relative !border-primary/50 p-6 shadow-xl shadow-primary/15">
               <span className="text-xs font-semibold uppercase tracking-wider text-primary">
                 Base
               </span>
-              <p className="mt-2 text-3xl font-bold text-navy">$5.9M</p>
+              <p className="text-gradient mt-2 text-3xl font-bold">$5.9M</p>
               <p className="mt-2 text-sm text-navy/70">
                 60 campuses, 40 hotels, 25% adoption
               </p>
             </div>
-            <div className="rounded-2xl border border-tint bg-white p-6">
+            <div className="glass p-6">
               <span className="text-xs font-semibold uppercase tracking-wider text-navy/50">
                 Upside
               </span>
@@ -297,7 +306,7 @@ export default function DeckPage() {
             </div>
           </div>
 
-          <div className="mt-8 flex items-start gap-3 rounded-xl border border-tint bg-white p-4">
+          <div className="glass mt-8 flex items-start gap-3 p-4">
             <AlertTriangle size={18} className="mt-0.5 shrink-0 text-primary" />
             <p className="text-sm text-navy/70">
               <span className="font-semibold text-navy">Note:</span> the
@@ -309,14 +318,15 @@ export default function DeckPage() {
       </section>
 
       {/* 8. Traction */}
-      <section id="traction" className="bg-white px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section id="traction" className="relative overflow-hidden bg-white px-6 py-24">
+        <div className="bg-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl">
           <SlideLabel index={8} total={TOTAL} title="Traction" />
           <h2 className="text-3xl font-bold text-navy md:text-4xl">
             Where things stand.
           </h2>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-tint">
+          <div className="glass mt-12 divide-y divide-white/60 overflow-hidden !p-0">
             {[
               {
                 item: "Beachhead identified (Colgate Residential Life, warm intro)",
@@ -334,12 +344,10 @@ export default function DeckPage() {
                 item: "First pilot building signed",
                 status: "Not started" as const,
               },
-            ].map((row, i) => (
+            ].map((row) => (
               <div
                 key={row.item}
-                className={`flex flex-col gap-3 px-6 py-5 sm:flex-row sm:items-center sm:justify-between ${
-                  i % 2 === 0 ? "bg-pale" : "bg-white"
-                } ${i > 0 ? "border-t border-tint" : ""}`}
+                className="flex flex-col gap-3 px-6 py-5 sm:flex-row sm:items-center sm:justify-between"
               >
                 <span className="text-sm font-medium text-navy">
                   {row.item}
@@ -352,15 +360,16 @@ export default function DeckPage() {
       </section>
 
       {/* 9. Competition */}
-      <section id="competition" className="bg-pale px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      <section id="competition" className="relative overflow-hidden bg-pale px-6 py-24">
+        <div className="bg-grid absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl">
           <SlideLabel index={9} total={TOTAL} title="Competition" />
           <h2 className="text-3xl font-bold text-navy md:text-4xl">
             Nobody serves the building.
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-tint bg-white p-6">
+            <div className="glass p-6">
               <h3 className="font-bold text-navy">Doing it yourself</h3>
               <dl className="mt-4 space-y-3 text-sm">
                 <div className="flex justify-between gap-4">
@@ -378,7 +387,7 @@ export default function DeckPage() {
               </dl>
             </div>
 
-            <div className="rounded-2xl border border-tint bg-white p-6">
+            <div className="glass p-6">
               <h3 className="font-bold text-navy">
                 Human delivery <span className="text-navy/50">(Rinse, Cleanly)</span>
               </h3>
@@ -400,7 +409,7 @@ export default function DeckPage() {
               </dl>
             </div>
 
-            <div className="rounded-2xl border-2 border-primary bg-navy p-6 text-white">
+            <div className="relative rounded-2xl border border-primary/40 bg-navy/90 p-6 text-white shadow-xl shadow-secondary/20 backdrop-blur-xl">
               <h3 className="font-bold">Cyclo</h3>
               <dl className="mt-4 space-y-3 text-sm">
                 <div className="flex justify-between gap-4">
@@ -424,16 +433,20 @@ export default function DeckPage() {
       {/* 10. Team & the ask */}
       <section
         id="team-ask"
-        className="flex min-h-[85vh] flex-col justify-center bg-navy px-6 py-24"
+        className="relative flex min-h-[85vh] flex-col justify-center overflow-hidden bg-navy px-6 py-24"
       >
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="bg-grid-dark absolute inset-0" />
+        <div className="glow-orb -bottom-32 left-1/4 h-96 w-96 bg-secondary/25" />
+        <div className="glow-orb top-0 right-1/4 h-72 w-72 bg-primary/25" />
+
+        <div className="relative mx-auto w-full max-w-6xl">
           <SlideLabel index={10} total={TOTAL} title="Team & the ask" dark />
           <h2 className="text-3xl font-bold text-white md:text-4xl">
             Team &amp; the ask
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-white/15 bg-white/5 p-8">
+            <div className="glass-dark p-8">
               <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
                 Founder
               </span>
@@ -447,11 +460,13 @@ export default function DeckPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/15 bg-white/5 p-8">
+            <div className="glass-dark p-8">
               <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
                 The ask
               </span>
-              <p className="mt-3 text-3xl font-bold text-white">$500K</p>
+              <p className="text-gradient-light mt-3 text-3xl font-bold">
+                $500K
+              </p>
               <p className="mt-1 text-sm font-semibold text-white/70">
                 pre-seed
               </p>

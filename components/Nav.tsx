@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/deck", label: "Deck" },
+  { href: "/about", label: "About" },
   { href: "/demo", label: "Demo" },
 ];
 
@@ -16,8 +16,8 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-tint bg-pale/80 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <div className="sticky top-4 z-50 px-4">
+      <header className="glass-chrome mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-6 py-3 shadow-lg shadow-navy/5">
         <Link href="/" className="text-lg font-bold tracking-tight text-navy">
           Cyclo
         </Link>
@@ -34,10 +34,7 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/deck"
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-secondary"
-          >
+          <Link href="/about" className="btn-primary !px-4 !py-2 text-sm">
             See the pitch
           </Link>
         </div>
@@ -50,10 +47,10 @@ export default function Nav() {
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
-      </nav>
+      </header>
 
       {open && (
-        <div className="border-t border-tint bg-pale px-6 py-4 md:hidden">
+        <div className="glass-chrome mx-auto mt-2 max-w-6xl rounded-2xl px-6 py-4 shadow-lg shadow-navy/5 md:hidden">
           <div className="flex flex-col gap-4">
             {links.map((link) => (
               <Link
@@ -70,6 +67,6 @@ export default function Nav() {
           </div>
         </div>
       )}
-    </header>
+    </div>
   );
 }

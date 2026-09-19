@@ -15,7 +15,7 @@ const sections = [
   { id: "team-ask", label: "Team & ask" },
 ];
 
-export default function DeckNav() {
+export default function AboutNav() {
   const [active, setActive] = useState("intro");
 
   useEffect(() => {
@@ -39,16 +39,16 @@ export default function DeckNav() {
   }, []);
 
   return (
-    <div className="sticky top-[65px] z-40 border-b border-tint bg-pale/90 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto px-6 py-3 text-sm">
+    <div className="sticky top-20 z-40 px-4">
+      <nav className="glass-chrome mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto rounded-2xl px-4 py-2.5 text-sm shadow-lg shadow-navy/5">
         {sections.map((section, i) => (
           <a
             key={section.id}
             href={`#${section.id}`}
-            className={`flex shrink-0 items-center gap-1.5 rounded-md px-3 py-1.5 font-medium whitespace-nowrap transition-colors ${
+            className={`flex shrink-0 items-center gap-1.5 rounded-xl px-3 py-1.5 font-medium whitespace-nowrap transition-all ${
               active === section.id
-                ? "bg-primary text-white"
-                : "text-navy/60 hover:text-primary"
+                ? "bg-gradient-to-r from-primary to-secondary text-white shadow-md shadow-primary/25"
+                : "text-navy/60 hover:bg-white/60 hover:text-primary"
             }`}
           >
             <span className="text-xs opacity-60">
