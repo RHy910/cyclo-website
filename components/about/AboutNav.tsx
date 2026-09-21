@@ -46,7 +46,7 @@ export default function AboutNav() {
             href={`#${section.id}`}
             className={`flex shrink-0 items-center gap-1.5 rounded-xl px-3 py-1.5 font-medium whitespace-nowrap transition-all ${
               active === section.id
-                ? "bg-gradient-to-r from-primary to-secondary text-white shadow-md shadow-primary/25"
+                ? "bg-gradient-to-r from-primary to-secondary text-white shadow-md shadow-navy/20"
                 : "text-navy/60 hover:bg-white/60 hover:text-primary"
             }`}
           >

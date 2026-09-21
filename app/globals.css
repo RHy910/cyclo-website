@@ -59,7 +59,7 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-xl border-2 border-transparent bg-gradient-to-r from-primary to-secondary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-none hover:bg-white hover:text-primary hover:shadow-xl hover:shadow-primary/35;
+    @apply inline-flex items-center gap-2 rounded-xl border-2 border-transparent bg-gradient-to-r from-primary to-secondary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-navy/20 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-none hover:bg-white hover:text-primary hover:shadow-xl hover:shadow-navy/25;
   }
 
   .btn-glass {

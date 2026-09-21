@@ -133,7 +133,7 @@ export default function AboutPage() {
             ].map((step, i) => (
               <div key={step.title} className="relative">
                 <div className="glass glass-invert group h-full p-6">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-bold text-white shadow-md shadow-primary/30">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-bold text-white shadow-md shadow-navy/20">
                     {i + 1}
                   </span>
                   <step.icon
@@ -177,7 +177,7 @@ export default function AboutPage() {
             ].map((step, i) => (
               <div key={step.title} className="relative">
                 <div className="glass glass-invert group p-6 text-center">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-white shadow-md shadow-primary/30">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-white shadow-md shadow-navy/20">
                     <step.icon size={22} />
                   </div>
                   <h3 className="mt-4 font-bold text-navy transition-colors group-hover:text-white">
