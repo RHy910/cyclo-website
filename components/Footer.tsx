@@ -12,6 +12,9 @@ export default function Footer() {
           <Link href="/about" className="hover:text-primary">
             About
           </Link>
+          <Link href="/team" className="hover:text-primary">
+            Team
+          </Link>
           <Link href="/demo" className="hover:text-primary">
             Demo
           </Link>

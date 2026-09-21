@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   Clock,
   Footprints,
@@ -20,11 +21,11 @@ import SlideLabel from "@/components/about/SlideLabel";
 import StatusBadge from "@/components/about/StatusBadge";
 
 export const metadata: Metadata = {
-  title: "About — Cyclo",
+  title: "About - Cyclo",
   description: "Cyclo's pre-seed pitch: robotic laundry logistics.",
 };
 
-const TOTAL = 10;
+const TOTAL = 9;
 
 export default function AboutPage() {
   return (
@@ -69,7 +70,7 @@ export default function AboutPage() {
               {
                 icon: Clock,
                 title: "It's automatic. You're still not free.",
-                desc: "The machine does the washing — the cost is standing by for it.",
+                desc: "The machine does the washing. The cost is standing by for it.",
               },
               {
                 icon: Footprints,
@@ -93,7 +94,7 @@ export default function AboutPage() {
           </div>
 
           <blockquote className="glass mt-12 border-l-4 !border-l-primary p-6 text-lg font-medium text-navy md:p-8 md:text-xl">
-            &ldquo;I hate doing laundry — and most of the time, I&apos;m not
+            &ldquo;I hate doing laundry, and most of the time, I&apos;m not
             even the one doing anything.&rdquo;
           </blockquote>
         </div>
@@ -206,12 +207,12 @@ export default function AboutPage() {
               {
                 icon: AlertTriangle,
                 title: "The catch",
-                desc: "Campus-only is seasonal — Starship's own reason for leaving.",
+                desc: "Campus-only is seasonal. It's Starship's own reason for leaving.",
               },
               {
                 icon: DollarSign,
                 title: "Already paying more",
-                desc: "Rinse has raised through Series D, backed by LG Electronics, charging $15–50/load — but skips dorms and college towns.",
+                desc: "Rinse has raised through Series D, backed by LG Electronics, charging $15–50/load, but skips dorms and college towns.",
               },
             ].map((item) => (
               <div key={item.title} className="glass p-6">
@@ -430,51 +431,24 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 10. Team & the ask */}
-      <section
-        id="team-ask"
-        className="relative flex min-h-[85vh] flex-col justify-center overflow-hidden bg-navy px-6 py-24"
-      >
+      {/* Closing CTA */}
+      <section className="relative flex min-h-[50vh] flex-col justify-center overflow-hidden bg-navy px-6 py-24">
         <div className="bg-grid-dark absolute inset-0" />
         <div className="glow-orb -bottom-32 left-1/4 h-96 w-96 bg-secondary/25" />
         <div className="glow-orb top-0 right-1/4 h-72 w-72 bg-primary/25" />
 
-        <div className="relative mx-auto w-full max-w-6xl">
-          <SlideLabel index={10} total={TOTAL} title="Team & the ask" dark />
+        <div className="relative mx-auto w-full max-w-6xl text-center">
           <h2 className="text-3xl font-bold text-white md:text-4xl">
-            Team &amp; the ask
+            Want to meet the team and see the ask?
           </h2>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <div className="glass-dark p-8">
-              <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
-                Founder
-              </span>
-              <h3 className="mt-3 text-xl font-bold text-white">
-                Ralph Hyacinthe
-              </h3>
-              <p className="mt-2 text-sm text-white/70">
-                Former Colgate Residential Life staff, with an
-                infrastructure and monitoring engineering background
-                (Datadog).
-              </p>
-            </div>
-
-            <div className="glass-dark p-8">
-              <span className="text-xs font-semibold uppercase tracking-wider text-secondary">
-                The ask
-              </span>
-              <p className="text-gradient-light mt-3 text-3xl font-bold">
-                $500K
-              </p>
-              <p className="mt-1 text-sm font-semibold text-white/70">
-                pre-seed
-              </p>
-              <p className="mt-4 text-sm text-white/70">
-                To build the first robot and fleet-monitoring layer, plus
-                2&ndash;3 pilot partners (colleges and extended-stay hotels).
-              </p>
-            </div>
+          <p className="mx-auto mt-3 max-w-xl text-white/70">
+            Founder background, and what we&apos;re raising.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <Link href="/team" className="btn-primary">
+              Meet the team
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>

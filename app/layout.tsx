@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Cyclo — Hands-free laundry logistics",
+  title: "Cyclo - Hands-free laundry logistics",
   description:
     "Cyclo does hands-free laundry logistics for college students and hotel guests. A robot picks up, monitors, and returns your laundry.",
 };

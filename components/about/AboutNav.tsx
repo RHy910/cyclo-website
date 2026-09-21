@@ -12,7 +12,6 @@ const sections = [
   { id: "market", label: "Market" },
   { id: "traction", label: "Traction" },
   { id: "competition", label: "Competition" },
-  { id: "team-ask", label: "Team & ask" },
 ];
 
 export default function AboutNav() {

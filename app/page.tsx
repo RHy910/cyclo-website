@@ -15,7 +15,7 @@ export default function Home() {
             Cyclo
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-navy/80 md:text-xl">
-            We do hands-free laundry logistics for college students and hotel
+            Hands-free laundry logistics for college students and hotel
             guests.
           </p>
 
@@ -45,8 +45,8 @@ export default function Home() {
                 Laundry eats time nobody has.
               </h2>
               <p className="mt-4 text-navy/70">
-                The machine does the washing — the real cost is standing by
-                for it. Trips up and down stairs to start, check, and collect
+                The machine does the washing. The real cost is standing by
+                for it: trips up and down stairs to start, check, and collect
                 a load, or loads left too long and rewashed from scratch.
               </p>
               <ul className="mt-6 space-y-3">
@@ -78,7 +78,7 @@ export default function Home() {
               <p className="mt-4 text-navy/70">
                 Book a pickup and forget about it. Cyclo collects your
                 laundry, starts and monitors the wash, and lets you know the
-                moment it&apos;s ready — no trips, no waiting, no forgotten
+                moment it&apos;s ready: no trips, no waiting, no forgotten
                 loads.
               </p>
               <div className="glass mt-6 flex items-center gap-3 p-4">

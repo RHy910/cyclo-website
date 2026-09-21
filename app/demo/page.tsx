@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import VideoGallery from "@/components/demo/VideoGallery";
 
 export const metadata: Metadata = {
-  title: "Demo — Cyclo",
+  title: "Demo - Cyclo",
   description: "See Cyclo's hands-free laundry logistics in action.",
 };
 
