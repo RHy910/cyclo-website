@@ -15,7 +15,6 @@ import {
   WashingMachine,
   Undo2,
   ArrowRight,
-  ExternalLink,
 } from "lucide-react";
 import AboutNav from "@/components/about/AboutNav";
 import SlideLabel from "@/components/about/SlideLabel";
@@ -84,17 +83,21 @@ export default function AboutPage() {
                 desc: "Left too long, rewashed from scratch.",
               },
             ].map((item) => (
-              <div key={item.title} className="glass p-6">
+              <div key={item.title} className="glass glass-invert group p-6">
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
                   <item.icon size={18} />
                 </span>
-                <h3 className="mt-4 font-bold text-navy">{item.title}</h3>
-                <p className="mt-2 text-sm text-navy/70">{item.desc}</p>
+                <h3 className="mt-4 font-bold text-navy transition-colors group-hover:text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm text-navy/70 transition-colors group-hover:text-white/70">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
 
-          <blockquote className="glass mt-12 border-l-4 !border-l-primary p-6 text-lg font-medium text-navy md:p-8 md:text-xl">
+          <blockquote className="glass glass-hover mt-12 border-l-4 !border-l-primary p-6 text-lg font-medium text-navy md:p-8 md:text-xl">
             &ldquo;I hate doing laundry, and most of the time, I&apos;m not
             even the one doing anything.&rdquo;
           </blockquote>
@@ -129,13 +132,20 @@ export default function AboutPage() {
               },
             ].map((step, i) => (
               <div key={step.title} className="relative">
-                <div className="glass h-full p-6">
+                <div className="glass glass-invert group h-full p-6">
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-sm font-bold text-white shadow-md shadow-primary/30">
                     {i + 1}
                   </span>
-                  <step.icon size={22} className="mt-4 text-primary" />
-                  <h3 className="mt-4 font-bold text-navy">{step.title}</h3>
-                  <p className="mt-2 text-sm text-navy/70">{step.desc}</p>
+                  <step.icon
+                    size={22}
+                    className="mt-4 text-primary transition-colors group-hover:text-secondary"
+                  />
+                  <h3 className="mt-4 font-bold text-navy transition-colors group-hover:text-white">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-navy/70 transition-colors group-hover:text-white/70">
+                    {step.desc}
+                  </p>
                 </div>
                 {i < 2 && (
                   <ArrowRight
@@ -166,13 +176,15 @@ export default function AboutPage() {
               { icon: Undo2, title: "Return" },
             ].map((step, i) => (
               <div key={step.title} className="relative">
-                <div className="glass p-6 text-center">
+                <div className="glass glass-invert group p-6 text-center">
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-white shadow-md shadow-primary/30">
                     <step.icon size={22} />
                   </div>
-                  <h3 className="mt-4 font-bold text-navy">{step.title}</h3>
+                  <h3 className="mt-4 font-bold text-navy transition-colors group-hover:text-white">
+                    {step.title}
+                  </h3>
                   {step.title === "Launder" && (
-                    <p className="mt-2 text-xs text-navy/60">
+                    <p className="mt-2 text-xs text-navy/60 transition-colors group-hover:text-white/60">
                       Robot starts + monitors the wash
                     </p>
                   )}
@@ -216,12 +228,16 @@ export default function AboutPage() {
                 desc: "Rinse has raised through Series D, backed by LG Electronics, charging $15–50/load, but skips dorms and college towns.",
               },
             ].map((item) => (
-              <div key={item.title} className="glass p-6">
+              <div key={item.title} className="glass glass-invert group p-6">
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
                   <item.icon size={18} />
                 </span>
-                <h3 className="mt-4 font-bold text-navy">{item.title}</h3>
-                <p className="mt-2 text-sm text-navy/70">{item.desc}</p>
+                <h3 className="mt-4 font-bold text-navy transition-colors group-hover:text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm text-navy/70 transition-colors group-hover:text-white/70">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -238,7 +254,7 @@ export default function AboutPage() {
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <div className="glass p-8">
+            <div className="glass glass-hover p-8">
               <span className="text-gradient text-5xl font-bold">$4</span>
               <span className="ml-2 text-lg font-semibold text-navy/70">
                 / load
@@ -247,7 +263,7 @@ export default function AboutPage() {
                 Charged directly to the resident at pickup.
               </p>
             </div>
-            <div className="glass p-8">
+            <div className="glass glass-hover p-8">
               <p className="text-sm text-navy/70">
                 Housing offices and hotel GMs grant building access{" "}
                 <span className="font-semibold text-navy">free</span>, as a
@@ -279,7 +295,7 @@ export default function AboutPage() {
           </p>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="glass p-6">
+            <div className="glass glass-hover p-6">
               <span className="text-xs font-semibold uppercase tracking-wider text-navy/50">
                 Conservative
               </span>
@@ -288,7 +304,7 @@ export default function AboutPage() {
                 25 campuses, 15 hotels, 15% adoption
               </p>
             </div>
-            <div className="glass relative !border-primary/50 p-6 shadow-xl shadow-primary/15">
+            <div className="glass glass-hover relative !border-primary/50 p-6 shadow-xl shadow-primary/15">
               <span className="text-xs font-semibold uppercase tracking-wider text-primary">
                 Base
               </span>
@@ -297,7 +313,7 @@ export default function AboutPage() {
                 60 campuses, 40 hotels, 25% adoption
               </p>
             </div>
-            <div className="glass p-6">
+            <div className="glass glass-hover p-6">
               <span className="text-xs font-semibold uppercase tracking-wider text-navy/50">
                 Upside
               </span>
@@ -308,7 +324,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="glass mt-8 flex items-start gap-3 p-4">
+          <div className="glass glass-hover mt-8 flex items-start gap-3 p-4">
             <AlertTriangle size={18} className="mt-0.5 shrink-0 text-primary" />
             <p className="text-sm text-navy/70">
               <span className="font-semibold text-navy">Note:</span> the
@@ -350,24 +366,12 @@ export default function AboutPage() {
             ].map((row) => (
               <div
                 key={row.item}
-                className="flex flex-col gap-3 px-6 py-5 sm:flex-row sm:items-center sm:justify-between"
+                className="flex flex-col gap-3 px-6 py-5 transition-colors hover:bg-white/50 sm:flex-row sm:items-center sm:justify-between"
               >
-                {row.link ? (
-                  <a
-                    href={row.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:text-secondary"
-                  >
-                    {row.item}
-                    <ExternalLink size={14} />
-                  </a>
-                ) : (
-                  <span className="text-sm font-medium text-navy">
-                    {row.item}
-                  </span>
-                )}
-                <StatusBadge status={row.status} />
+                <span className="text-sm font-medium text-navy">
+                  {row.item}
+                </span>
+                <StatusBadge status={row.status} href={row.link} />
               </div>
             ))}
           </div>
@@ -384,7 +388,7 @@ export default function AboutPage() {
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="glass p-6">
+            <div className="glass glass-hover p-6">
               <h3 className="font-bold text-navy">Doing it yourself</h3>
               <dl className="mt-4 space-y-3 text-sm">
                 <div className="flex justify-between gap-4">
@@ -402,7 +406,7 @@ export default function AboutPage() {
               </dl>
             </div>
 
-            <div className="glass p-6">
+            <div className="glass glass-hover p-6">
               <h3 className="font-bold text-navy">
                 Human delivery <span className="text-navy/50">(Rinse, Cleanly)</span>
               </h3>
@@ -424,7 +428,7 @@ export default function AboutPage() {
               </dl>
             </div>
 
-            <div className="relative rounded-2xl border border-primary/40 bg-navy/90 p-6 text-white shadow-xl shadow-secondary/20 backdrop-blur-xl">
+            <div className="relative rounded-2xl border border-primary/40 bg-navy/90 p-6 text-white shadow-xl shadow-secondary/20 backdrop-blur-xl transition-all duration-200 hover:-translate-y-1 hover:border-secondary hover:shadow-2xl hover:shadow-secondary/40">
               <h3 className="font-bold">Cyclo</h3>
               <dl className="mt-4 space-y-3 text-sm">
                 <div className="flex justify-between gap-4">

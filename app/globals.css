@@ -47,6 +47,17 @@ body {
     @apply border border-white/60 bg-white/50 backdrop-blur-xl;
   }
 
+  /* Heavier, brighter frost on hover: for cards with data/text that
+     shouldn't flip to a dark background */
+  .glass-hover {
+    @apply transition-all duration-200 hover:-translate-y-1 hover:border-white hover:bg-white/85 hover:shadow-xl hover:shadow-primary/15;
+  }
+
+  /* Full color inversion on hover, paired with `group-hover:` on children */
+  .glass-invert {
+    @apply transition-all duration-200 hover:-translate-y-1 hover:border-navy hover:bg-navy hover:shadow-xl hover:shadow-navy/25;
+  }
+
   .btn-primary {
     @apply inline-flex items-center gap-2 rounded-xl border-2 border-transparent bg-gradient-to-r from-primary to-secondary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-none hover:bg-white hover:text-primary hover:shadow-xl hover:shadow-primary/35;
   }
