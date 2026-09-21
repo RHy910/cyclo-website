@@ -15,6 +15,7 @@ import {
   WashingMachine,
   Undo2,
   ArrowRight,
+  ExternalLink,
 } from "lucide-react";
 import AboutNav from "@/components/about/AboutNav";
 import SlideLabel from "@/components/about/SlideLabel";
@@ -330,12 +331,13 @@ export default function AboutPage() {
           <div className="glass mt-12 divide-y divide-white/60 overflow-hidden !p-0">
             {[
               {
-                item: "Beachhead identified (Colgate Residential Life, warm intro)",
+                item: "Colgate Residential Life identified as target",
                 status: "In progress" as const,
               },
               {
                 item: "14-question survey fielded",
                 status: "Live" as const,
+                link: "https://forms.gle/W9PXFkNngMiHTUeWA",
               },
               {
                 item: "Concept demo",
@@ -350,9 +352,21 @@ export default function AboutPage() {
                 key={row.item}
                 className="flex flex-col gap-3 px-6 py-5 sm:flex-row sm:items-center sm:justify-between"
               >
-                <span className="text-sm font-medium text-navy">
-                  {row.item}
-                </span>
+                {row.link ? (
+                  <a
+                    href={row.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary underline decoration-primary/40 underline-offset-4 transition-colors hover:text-secondary"
+                  >
+                    {row.item}
+                    <ExternalLink size={14} />
+                  </a>
+                ) : (
+                  <span className="text-sm font-medium text-navy">
+                    {row.item}
+                  </span>
+                )}
                 <StatusBadge status={row.status} />
               </div>
             ))}
