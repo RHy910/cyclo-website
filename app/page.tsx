@@ -8,23 +8,15 @@ const audiences = [
     icon: Hotel,
     title: "Hotels and extended-stay",
     who: "General managers, operations and housekeeping leads",
-    questions: [
-      "How much staff time goes to laundry today, in-house or outsourced?",
-      "When a guest asks for laundry help, what happens?",
-      "What have you tried that didn't work?",
-      "What would a small trial need to look like for you to say yes?",
-    ],
+    topics:
+      "We'd like to hear how laundry works at your property today, where it eats up staff time, and what guests ask for that you can't easily offer.",
   },
   {
     icon: HeartHandshake,
     title: "Senior living and nursing homes",
     who: "Administrators, directors of nursing, environmental services",
-    questions: [
-      "Who handles resident laundry today, and how does it go?",
-      "How often do items get lost, mixed up, or delayed?",
-      "Which rules on infection control and resident belongings would any new service have to respect?",
-      "Where is your team stretched thinnest?",
-    ],
+    topics:
+      "We'd like to hear who handles resident laundry today, where things go wrong, and what any outside help would have to respect, like infection control and resident belongings.",
   },
 ];
 
@@ -91,36 +83,31 @@ export default function Home() {
             Who we&apos;d like to hear from
           </h2>
           <p className="mt-3 max-w-2xl text-lg text-navy/70">
-            If you run a property, you know where the time goes. Here&apos;s
-            what we&apos;re curious about.
+            If one of these sounds like you, we&apos;d love 15 minutes of your
+            time.
           </p>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {audiences.map((a) => (
               <div
                 key={a.title}
-                className="rounded-2xl border border-tint bg-cream p-8"
+                className="flex flex-col rounded-2xl border border-tint bg-cream p-8"
               >
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy text-white">
                   <a.icon size={22} />
                 </span>
                 <h3 className="mt-5 text-xl font-bold text-navy">{a.title}</h3>
                 <p className="mt-1 text-base text-navy/70">{a.who}</p>
-
-                <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-primary">
-                  What we want to ask
+                <p className="mt-5 flex-1 text-base text-navy/80">
+                  {a.topics}
                 </p>
-                <ul className="mt-3 space-y-3">
-                  {a.questions.map((q) => (
-                    <li
-                      key={q}
-                      className="flex gap-3 text-base text-navy/80"
-                    >
-                      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      {q}
-                    </li>
-                  ))}
-                </ul>
+                <Link
+                  href="/#talk"
+                  className="mt-6 inline-flex items-center gap-2 text-base font-semibold text-primary transition-colors hover:text-navy"
+                >
+                  Start a conversation
+                  <ArrowRight size={16} />
+                </Link>
               </div>
             ))}
           </div>
@@ -146,6 +133,15 @@ export default function Home() {
                 same problem. We might be wrong, or we might be solving the
                 wrong part of it. That&apos;s exactly what we want to find out
                 before building anything.
+              </p>
+              <p className="text-base text-navy/70">
+                Ralph Hyacinthe, founder.{" "}
+                <Link
+                  href="/team"
+                  className="font-semibold text-primary underline underline-offset-4 hover:text-navy"
+                >
+                  More about me
+                </Link>
               </p>
             </div>
           </div>
@@ -173,11 +169,47 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          <p className="mt-8 max-w-3xl text-base text-navy/70">
+            Anything you tell us stays private. We won&apos;t name you or your
+            property without asking first, and we only record a call if you
+            say yes.
+          </p>
+        </div>
+      </section>
+
+      {/* Is this for you */}
+      <section className="bg-cream">
+        <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
+          <h2 className="text-3xl font-bold text-navy md:text-4xl">
+            Is this for you?
+          </h2>
+          <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-16">
+            <div>
+              <h3 className="text-lg font-bold text-primary">
+                Probably, if
+              </h3>
+              <ul className="mt-4 space-y-3 text-base text-navy/80">
+                <li>You run, or help run, a hotel or senior living community.</li>
+                <li>You&apos;re open to talking about how laundry works today.</li>
+                <li>You&apos;d like a say in what gets built.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-navy/60">
+                Not yet, if
+              </h3>
+              <ul className="mt-4 space-y-3 text-base text-navy/80">
+                <li>You want to buy a laundry service today. We don&apos;t have one.</li>
+                <li>You&apos;d rather wait and see a finished product first.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Talk to us */}
-      <section id="talk" className="scroll-mt-24 bg-cream">
+      <section id="talk" className="scroll-mt-24 bg-white">
         <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
           <h2 className="text-3xl font-bold text-navy md:text-4xl">
             Talk to us
@@ -206,7 +238,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-tint bg-white p-8">
+          <div className="mt-8 rounded-2xl border border-tint bg-cream p-8">
             <ContactForm
               tone="light"
               subjects={[
