@@ -13,13 +13,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Cyclo - Hands-free laundry logistics",
   description:
-    "Cyclo does hands-free laundry logistics for college students and hotel guests. A robot picks up, monitors, and returns your laundry.",
+    "Cyclo is exploring hands-free laundry help for hotels and senior living communities. We are talking to the people who run them before building anything.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-pale text-navy font-sans">
+      <body className="min-h-full flex flex-col bg-cream text-navy font-sans">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

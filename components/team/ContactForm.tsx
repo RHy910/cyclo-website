@@ -5,14 +5,24 @@ import { Send } from "lucide-react";
 
 const CONTACT_EMAIL = "rhyacinthe@colgate.edu";
 
-const subjects = [
+const defaultSubjects = [
   "Investment / partnership",
   "Pilot / building interest",
   "Press / media",
   "Other",
 ];
 
-export default function ContactForm() {
+export default function ContactForm({
+  tone = "dark",
+  subjects = defaultSubjects,
+  placeholder = "What's on your mind?",
+  messageLabel = "Message",
+}: {
+  tone?: "dark" | "light";
+  subjects?: string[];
+  placeholder?: string;
+  messageLabel?: string;
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState(subjects[0]);
@@ -29,14 +39,21 @@ export default function ContactForm() {
     window.location.href = mailtoUrl;
   };
 
-  const inputClass =
-    "w-full rounded-xl border border-white/20 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-secondary";
+  const light = tone === "light";
+
+  const inputClass = light
+    ? "w-full rounded-xl border border-navy/15 bg-white px-4 py-3 text-base text-navy placeholder-navy/40 outline-none transition-colors focus:border-primary"
+    : "w-full rounded-xl border border-white/20 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder-white/40 outline-none transition-colors focus:border-secondary";
+
+  const labelClass = light
+    ? "mb-1.5 block text-sm font-semibold text-navy/70"
+    : "mb-1.5 block text-xs font-semibold uppercase tracking-wider text-white/60";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-white/60">
+          <label htmlFor="name" className={labelClass}>
             Name
           </label>
           <input
@@ -45,12 +62,12 @@ export default function ContactForm() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Jane Investor"
+            placeholder="Your name"
             className={inputClass}
           />
         </div>
         <div>
-          <label htmlFor="email" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-white/60">
+          <label htmlFor="email" className={labelClass}>
             Email
           </label>
           <input
@@ -59,14 +76,14 @@ export default function ContactForm() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="jane@fund.com"
+            placeholder="you@yourproperty.com"
             className={inputClass}
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="subject" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-white/60">
+        <label htmlFor="subject" className={labelClass}>
           Subject
         </label>
         <select
@@ -76,7 +93,11 @@ export default function ContactForm() {
           className={`${inputClass} appearance-none`}
         >
           {subjects.map((s) => (
-            <option key={s} value={s} className="bg-navy text-white">
+            <option
+              key={s}
+              value={s}
+              className={light ? "bg-white text-navy" : "bg-navy text-white"}
+            >
               {s}
             </option>
           ))}
@@ -84,8 +105,8 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-white/60">
-          Message
+        <label htmlFor="message" className={labelClass}>
+          {messageLabel}
         </label>
         <textarea
           id="message"
@@ -93,7 +114,7 @@ export default function ContactForm() {
           rows={5}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder="What's on your mind?"
+          placeholder={placeholder}
           className={`${inputClass} resize-none`}
         />
       </div>

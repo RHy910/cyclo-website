@@ -1,121 +1,223 @@
 import Link from "next/link";
-import { ArrowRight, Clock, Footprints, RotateCcw, Bot } from "lucide-react";
+import { ArrowRight, Hotel, HeartHandshake, Mail, Phone } from "lucide-react";
+import ContactForm from "@/components/team/ContactForm";
+import LinkedinIcon from "@/components/icons/LinkedinIcon";
+
+const audiences = [
+  {
+    icon: Hotel,
+    title: "Hotels and extended-stay",
+    who: "General managers, operations and housekeeping leads",
+    questions: [
+      "How much staff time goes to laundry today, in-house or outsourced?",
+      "When a guest asks for laundry help, what happens?",
+      "What have you tried that didn't work?",
+      "What would a small trial need to look like for you to say yes?",
+    ],
+  },
+  {
+    icon: HeartHandshake,
+    title: "Senior living and nursing homes",
+    who: "Administrators, directors of nursing, environmental services",
+    questions: [
+      "Who handles resident laundry today, and how does it go?",
+      "How often do items get lost, mixed up, or delayed?",
+      "Which rules on infection control and resident belongings would any new service have to respect?",
+      "Where is your team stretched thinnest?",
+    ],
+  },
+];
+
+const steps = [
+  {
+    title: "A short conversation",
+    desc: "15 minutes by phone, video, or in person at your property.",
+  },
+  {
+    title: "No pitch, no commitment",
+    desc: "We're not selling anything yet. We ask, and we listen.",
+  },
+  {
+    title: "We share what we learn",
+    desc: "You get a summary of what we're hearing from other properties.",
+  },
+];
+
+const chip =
+  "inline-flex items-center gap-2 rounded-xl border border-navy/15 bg-white px-4 py-2.5 text-sm font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:border-navy hover:bg-navy hover:text-white";
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="bg-grid absolute inset-0" />
-        <div className="glow-orb -top-24 left-1/2 h-96 w-96 -translate-x-2/3 bg-primary/30" />
-        <div className="glow-orb top-10 left-1/2 h-72 w-72 translate-x-1/3 bg-secondary/30" />
-
-        <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-16 text-center md:pt-28 md:pb-24">
-          <h1 className="text-gradient text-5xl font-bold tracking-tight md:text-7xl">
-            Cyclo
+      <section className="bg-cream">
+        <div className="mx-auto max-w-5xl px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+            For hotels and senior living communities
+          </p>
+          <h1 className="mt-4 text-4xl leading-tight font-bold text-navy md:text-6xl">
+            We&apos;re learning where laundry slows your team down.
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-navy/80 md:text-xl">
-            Hands-free laundry logistics for college students and hotel
-            guests.
+          <p className="mt-6 max-w-2xl text-lg text-navy/80 md:text-xl">
+            Cyclo is exploring hands-free laundry help for hotels and senior
+            living communities. Before we build anything, we want to hear from
+            the people who run them.
           </p>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/about" className="btn-primary">
-              See the pitch
-              <ArrowRight size={16} />
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <Link href="/#talk" className="btn-primary !py-4 !text-base">
+              Talk to us for 15 minutes
+              <ArrowRight size={18} />
             </Link>
-            <Link href="/demo" className="btn-glass">
-              See the product
-              <ArrowRight size={16} />
-            </Link>
+            <a
+              href="tel:+19415921078"
+              className="inline-flex items-center gap-2 rounded-xl border border-navy/20 bg-white px-6 py-4 text-base font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:border-navy hover:bg-navy hover:text-white"
+            >
+              <Phone size={18} />
+              Call (941) 592-1078
+            </a>
           </div>
+
+          <p className="mt-6 text-base text-navy/70">
+            We&apos;re not selling anything yet. Just asking questions.
+          </p>
         </div>
       </section>
 
-      {/* Problem / Solution snapshot */}
-      <section className="relative overflow-hidden border-t border-white/60">
-        <div className="bg-grid absolute inset-0 opacity-60" />
-        <div className="relative mx-auto max-w-6xl px-6 py-20">
-          <div className="grid gap-10 md:grid-cols-2 md:gap-16">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-                The problem
-              </span>
-              <h2 className="mt-3 text-2xl font-bold text-navy md:text-3xl">
-                Laundry eats time nobody has.
-              </h2>
-              <p className="mt-4 text-navy/70">
-                The machine does the washing. The real cost is standing by
-                for it: trips up and down stairs to start, check, and collect
-                a load, or loads left too long and rewashed from scratch.
-              </p>
-              <ul className="mt-6 space-y-3">
-                {[
-                  { icon: Clock, label: "Time lost standing by for a machine" },
-                  { icon: Footprints, label: "Constant trips to start, check, collect" },
-                  { icon: RotateCcw, label: "Forgotten loads, rewashed from scratch" },
-                ].map((item) => (
-                  <li
-                    key={item.label}
-                    className="flex items-center gap-3 text-sm font-medium text-navy/80"
-                  >
-                    <span className="glass flex h-9 w-9 shrink-0 items-center justify-center !rounded-xl text-primary">
-                      <item.icon size={16} />
-                    </span>
-                    {item.label}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-                The solution
-              </span>
-              <h2 className="mt-3 text-2xl font-bold text-navy md:text-3xl">
-                A robot picks up, monitors, and returns it.
-              </h2>
-              <p className="mt-4 text-navy/70">
-                Book a pickup and forget about it. Cyclo collects your
-                laundry, starts and monitors the wash, and lets you know the
-                moment it&apos;s ready: no trips, no waiting, no forgotten
-                loads.
-              </p>
-              <div className="glass mt-6 flex items-center gap-3 p-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
-                  <Bot size={18} />
-                </span>
-                <p className="text-sm font-medium text-navy/80">
-                  Request a pickup. Cyclo handles the rest. Get notified when
-                  it&apos;s done.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom CTA */}
-      <section className="relative overflow-hidden bg-navy">
-        <div className="bg-grid-dark absolute inset-0" />
-        <div className="glow-orb top-0 left-1/2 h-80 w-80 -translate-x-1/2 bg-secondary/25" />
-
-        <div className="relative mx-auto max-w-6xl px-6 py-16 text-center">
-          <h2 className="text-2xl font-bold text-white md:text-3xl">
-            Curious how it all works?
+      {/* Who we want to hear from */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
+          <h2 className="text-3xl font-bold text-navy md:text-4xl">
+            Who we&apos;d like to hear from
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-white/70">
-            Dig into the pitch, or watch the product in action.
+          <p className="mt-3 max-w-2xl text-lg text-navy/70">
+            If you run a property, you know where the time goes. Here&apos;s
+            what we&apos;re curious about.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/about" className="btn-primary">
-              See the pitch
-              <ArrowRight size={16} />
-            </Link>
-            <Link href="/demo" className="btn-glass-dark">
-              See the product
-              <ArrowRight size={16} />
-            </Link>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {audiences.map((a) => (
+              <div
+                key={a.title}
+                className="rounded-2xl border border-tint bg-cream p-8"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy text-white">
+                  <a.icon size={22} />
+                </span>
+                <h3 className="mt-5 text-xl font-bold text-navy">{a.title}</h3>
+                <p className="mt-1 text-base text-navy/70">{a.who}</p>
+
+                <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-primary">
+                  What we want to ask
+                </p>
+                <ul className="mt-3 space-y-3">
+                  {a.questions.map((q) => (
+                    <li
+                      key={q}
+                      className="flex gap-3 text-base text-navy/80"
+                    >
+                      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      {q}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why we're asking */}
+      <section className="bg-cream">
+        <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
+          <div className="grid gap-10 md:grid-cols-5 md:gap-16">
+            <h2 className="text-3xl font-bold text-navy md:col-span-2 md:text-4xl">
+              Why we&apos;re asking
+            </h2>
+            <div className="space-y-5 text-lg text-navy/80 md:col-span-3">
+              <p>
+                Cyclo started with a simple observation in college dorms: the
+                washing is automatic, but the standing by for it isn&apos;t.
+                Trips up and down stairs, checking whether a load is done,
+                clothes left too long.
+              </p>
+              <p>
+                We think hotels and care communities may have a version of the
+                same problem. We might be wrong, or we might be solving the
+                wrong part of it. That&apos;s exactly what we want to find out
+                before building anything.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How a conversation works */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
+          <h2 className="text-3xl font-bold text-navy md:text-4xl">
+            What a conversation looks like
+          </h2>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {steps.map((s, i) => (
+              <div
+                key={s.title}
+                className="rounded-2xl border border-tint bg-cream p-8"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-navy text-base font-bold text-white">
+                  {i + 1}
+                </span>
+                <h3 className="mt-5 text-xl font-bold text-navy">{s.title}</h3>
+                <p className="mt-2 text-base text-navy/70">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Talk to us */}
+      <section id="talk" className="scroll-mt-24 bg-cream">
+        <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
+          <h2 className="text-3xl font-bold text-navy md:text-4xl">
+            Talk to us
+          </h2>
+          <p className="mt-3 max-w-2xl text-lg text-navy/70">
+            Send a note, or reach Ralph directly. Whatever is easiest for you.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="tel:+19415921078" className={chip}>
+              <Phone size={16} />
+              (941) 592-1078
+            </a>
+            <a href="mailto:rhyacinthe@colgate.edu" className={chip}>
+              <Mail size={16} />
+              rhyacinthe@colgate.edu
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ralph-hyacinthe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={chip}
+            >
+              <LinkedinIcon size={16} />
+              LinkedIn
+            </a>
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-tint bg-white p-8">
+            <ContactForm
+              tone="light"
+              subjects={[
+                "I run a hotel",
+                "I run a senior living or nursing community",
+                "I'd like to be interviewed",
+                "Other",
+              ]}
+              messageLabel="Tell us a bit about your property"
+              placeholder="Where does laundry take up the most time for your team?"
+            />
           </div>
         </div>
       </section>

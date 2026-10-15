@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function DemoPage() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-pale">
       <div className="bg-grid absolute inset-0" />
       <div className="glow-orb -top-24 left-1/2 h-96 w-96 -translate-x-1/2 bg-primary/25" />
 

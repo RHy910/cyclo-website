@@ -35,8 +35,8 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <Link href="/about" className="btn-primary !px-4 !py-2 text-sm">
-            See the pitch
+          <Link href="/#talk" className="btn-primary !px-4 !py-2 text-sm">
+            Talk to us
           </Link>
         </div>
 
