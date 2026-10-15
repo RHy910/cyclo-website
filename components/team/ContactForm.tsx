@@ -25,7 +25,7 @@ export default function ContactForm({
 }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState(subjects[0]);
+  const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -86,22 +86,21 @@ export default function ContactForm({
         <label htmlFor="subject" className={labelClass}>
           Subject
         </label>
-        <select
+        <input
           id="subject"
+          type="text"
+          required
+          list="subject-suggestions"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
-          className={`${inputClass} appearance-none`}
-        >
+          placeholder="Type a subject, or pick a suggestion"
+          className={inputClass}
+        />
+        <datalist id="subject-suggestions">
           {subjects.map((s) => (
-            <option
-              key={s}
-              value={s}
-              className={light ? "bg-white text-navy" : "bg-navy text-white"}
-            >
-              {s}
-            </option>
+            <option key={s} value={s} />
           ))}
-        </select>
+        </datalist>
       </div>
 
       <div>

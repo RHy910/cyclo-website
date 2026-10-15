@@ -196,7 +196,7 @@ export default function Home() {
               rhyacinthe@colgate.edu
             </a>
             <a
-              href="https://www.linkedin.com/in/ralph-hyacinthe"
+              href="https://www.linkedin.com/in/ralphhyacinthe/"
               target="_blank"
               rel="noopener noreferrer"
               className={chip}

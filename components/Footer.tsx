@@ -22,7 +22,7 @@ export default function Footer() {
           </Link>
           <span className="h-4 w-px bg-tint" />
           <a
-            href="https://www.linkedin.com/in/ralph-hyacinthe"
+            href="https://www.linkedin.com/in/ralphhyacinthe/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
